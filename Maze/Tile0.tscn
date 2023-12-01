@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://by8b1vn3vrijp"]
+
+[ext_resource type="Texture2D" uid="uid://ffhvhcg18p5j" path="res://grey_stone_path_diff_4k.jpg" id="1_feckv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ti7pp"]
+albedo_color = Color(0.996078, 1, 0.870588, 0)
+albedo_texture = ExtResource("1_feckv")
+
+[sub_resource type="BoxMesh" id="BoxMesh_h61ua"]
+material = SubResource("StandardMaterial3D_ti7pp")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="12"]
+size = Vector3(2, 0.1, 2)
+
+[node name="Tile" type="Node3D"]
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+
+[node name="Ground" type="MeshInstance3D" parent="StaticBody"]
+mesh = SubResource("BoxMesh_h61ua")
+
+[node name="Ground_Collision" type="CollisionShape3D" parent="StaticBody"]
+shape = SubResource("12")

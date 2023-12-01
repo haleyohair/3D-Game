@@ -1,0 +1,6 @@
+[gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://dr8rmy3g66wta"]
+
+[ext_resource type="Texture2D" uid="uid://bugkxv4m8jvbw" path="res://mossy_stone_wall_diff_4k.jpg" id="1_4t3lj"]
+
+[resource]
+albedo_texture = ExtResource("1_4t3lj")

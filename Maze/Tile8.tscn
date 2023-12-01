@@ -1,0 +1,43 @@
+[gd_scene load_steps=9 format=3 uid="uid://b22p66w17lenu"]
+
+[ext_resource type="Texture2D" uid="uid://bugkxv4m8jvbw" path="res://mossy_stone_wall_diff_4k.jpg" id="1_4w5xi"]
+[ext_resource type="Texture2D" uid="uid://ffhvhcg18p5j" path="res://grey_stone_path_diff_4k.jpg" id="1_ibggf"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2310o"]
+albedo_color = Color(0.807843, 0.831373, 0.854902, 1)
+albedo_texture = ExtResource("1_4w5xi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_ex105"]
+material = SubResource("StandardMaterial3D_2310o")
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="BoxShape3D" id="9"]
+size = Vector3(0.1, 2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k4c0v"]
+albedo_texture = ExtResource("1_ibggf")
+
+[sub_resource type="BoxMesh" id="BoxMesh_5jib6"]
+material = SubResource("StandardMaterial3D_k4c0v")
+size = Vector3(2, 0.1, 2)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_riaic"]
+size = Vector3(2, 0.1, 2)
+
+[node name="Tile" type="Node3D"]
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+
+[node name="W" type="MeshInstance3D" parent="StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+mesh = SubResource("BoxMesh_ex105")
+
+[node name="W_Collision" type="CollisionShape3D" parent="StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0)
+shape = SubResource("9")
+
+[node name="Ground" type="MeshInstance3D" parent="StaticBody"]
+mesh = SubResource("BoxMesh_5jib6")
+
+[node name="Ground_Collision" type="CollisionShape3D" parent="StaticBody"]
+shape = SubResource("BoxShape3D_riaic")
