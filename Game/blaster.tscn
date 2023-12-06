@@ -19,7 +19,6 @@ metallic = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0yc"]
 resource_name = "_defaultMat"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bci24"]
@@ -156,7 +155,6 @@ visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Muzzle"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-visible = false
 light_color = Color(0.996078, 1, 0.72549, 1)
 light_energy = 5.666
 omni_range = 60.0
@@ -164,7 +162,6 @@ omni_attenuation = 1.7411
 
 [node name="Muzzleflash" type="MeshInstance3D" parent="Muzzle"]
 transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, 0.0510589, 0.871777)
-visible = false
 mesh = ExtResource("2_upqvd")
 skeleton = NodePath("../..")
 surface_material_override/0 = ExtResource("3_eouxh")

@@ -2,7 +2,7 @@ extends Node3D
 
 
 
-func _shoot():
+func shoot():
 	$Muzzle.show()
 	$Timer.start()
 
