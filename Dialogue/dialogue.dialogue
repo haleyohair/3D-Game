@@ -1,0 +1,14 @@
+~ main
+
+Player: [[Hi|Hello|Howdy]], what is your name?
+Enemy: Growl
+- Are you a nice?
+	Enemy: Growl
+- Should I be afraid?
+	Enemy: Growl
+- End the conversation => END
+Player: I guess I have to attack you, now.
+set Global.attack()
+
+=> END
+

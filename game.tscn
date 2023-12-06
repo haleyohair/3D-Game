@@ -1,0 +1,135 @@
+[gd_scene load_steps=16 format=3 uid="uid://dwf12xde2pr2q"]
+
+[ext_resource type="PackedScene" uid="uid://1jiynlranjhq" path="res://terrain/terrain1.tscn" id="1_wd6r8"]
+[ext_resource type="Texture2D" uid="uid://dxydgtqhu3501" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_wmcyq"]
+[ext_resource type="Script" path="res://Game/player.gd" id="2_5a2gb"]
+[ext_resource type="PackedScene" uid="uid://cfmj08culyyig" path="res://Game/blaster.tscn" id="3_cjww6"]
+[ext_resource type="Script" path="res://UI/HUD.gd" id="5_dm0qm"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lhwv2"]
+panorama = ExtResource("1_wmcyq")
+
+[sub_resource type="Sky" id="Sky_jml52"]
+sky_material = SubResource("PanoramaSkyMaterial_lhwv2")
+
+[sub_resource type="Environment" id="Environment_2upg8"]
+background_mode = 2
+sky = SubResource("Sky_jml52")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_7hlsk"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c8p3c"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nky4q"]
+height = 1.2
+
+[sub_resource type="Animation" id="Animation_htppx"]
+resource_name = "Idle"
+length = 3.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_uxwxh"]
+length = 0.001
+
+[sub_resource type="Animation" id="Animation_kx7rc"]
+resource_name = "attack"
+length = 0.7
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ih2ug"]
+_data = {
+"Idle": SubResource("Animation_htppx"),
+"RESET": SubResource("Animation_uxwxh"),
+"attack": SubResource("Animation_kx7rc")
+}
+
+[node name="Game" type="Node3D"]
+
+[node name="Terrain" parent="." instance=ExtResource("1_wd6r8")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+
+[node name="env" type="Node3D" parent="."]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="env"]
+environment = SubResource("Environment_2upg8")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="env"]
+transform = Transform3D(0.950331, 0.250837, -0.184258, -1.91847e-08, 0.592013, 0.805928, 0.31124, -0.765899, 0.562609, 0, 0, 0)
+shadow_opacity = 0.5
+
+[node name="Player" type="CharacterBody3D" parent="."]
+transform = Transform3D(0.999588, 0, -0.0287067, 0, 1, 0, 0.0287067, 0, 0.999588, -9.77015, 1.35295, -0.555037)
+script = ExtResource("2_5a2gb")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+mesh = SubResource("CapsuleMesh_7hlsk")
+
+[node name="standing_collsion_shape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_c8p3c")
+
+[node name="crouching_collsion_shape" type="CollisionShape3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603537, 0)
+shape = SubResource("CapsuleShape3D_nky4q")
+disabled = true
+
+[node name="head" type="Node3D" parent="Player"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Player/head"]
+
+[node name="Weapon" type="Node3D" parent="Player/head"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333605, -0.408288, -1.12399)
+
+[node name="Blaster" parent="Player/head/Weapon" instance=ExtResource("3_cjww6")]
+transform = Transform3D(-1, 0, -8.75443e-08, 0, 1, 0, 8.75443e-08, 0, -1, 0.358139, 0, 0.305752)
+
+[node name="RayCast3D" type="RayCast3D" parent="Player"]
+target_position = Vector3(0, 2, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Player"]
+autoplay = "Idle"
+playback_default_blend_time = 0.1
+libraries = {
+"": SubResource("AnimationLibrary_ih2ug")
+}
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("5_dm0qm")
+
+[node name="Coins" type="Label" parent="UI/HUD"]
+layout_mode = 1
+offset_left = 10.0
+offset_right = 210.0
+offset_bottom = 40.0
+theme_override_font_sizes/font_size = 40
+text = "Score:"
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="UI/HUD"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -212.0
+offset_right = -12.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_font_sizes/font_size = 40
+text = "Time:"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="UI/HUD"]
+
+[connection signal="animation_finished" from="Player/AnimationPlayer" to="Player" method="_on_animation_player_animation_finished"]
