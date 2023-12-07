@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://dwf12xde2pr2q"]
+[gd_scene load_steps=20 format=3 uid="uid://dwf12xde2pr2q"]
 
 [ext_resource type="PackedScene" uid="uid://1jiynlranjhq" path="res://terrain/terrain1.tscn" id="1_wd6r8"]
 [ext_resource type="Texture2D" uid="uid://dxydgtqhu3501" path="res://Assets/kloofendal_48d_partly_cloudy_puresky_4k.exr" id="1_wmcyq"]
 [ext_resource type="Script" path="res://Game/player.gd" id="2_5a2gb"]
 [ext_resource type="PackedScene" uid="uid://cfmj08culyyig" path="res://Game/blaster.tscn" id="3_cjww6"]
 [ext_resource type="Script" path="res://UI/HUD.gd" id="5_dm0qm"]
+[ext_resource type="PackedScene" uid="uid://d0pjs6ecqts5r" path="res://terrain/maze.tscn" id="6_tq808"]
+[ext_resource type="Script" path="res://terrain/Sculpture.gd" id="7_infqp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lhwv2"]
 panorama = ExtResource("1_wmcyq")
@@ -44,6 +46,14 @@ _data = {
 "attack": SubResource("Animation_kx7rc")
 }
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_myu3c"]
+albedo_color = Color(0.976471, 0.364706, 0.937255, 1)
+metallic = 0.36
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pxqp3"]
+albedo_color = Color(0.235294, 1, 0.254902, 1)
+metallic = 0.31
+
 [node name="Game" type="Node3D"]
 
 [node name="Terrain" parent="." instance=ExtResource("1_wd6r8")]
@@ -59,7 +69,7 @@ transform = Transform3D(0.950331, 0.250837, -0.184258, -1.91847e-08, 0.592013, 0
 shadow_opacity = 0.5
 
 [node name="Player" type="CharacterBody3D" parent="."]
-transform = Transform3D(0.999588, 0, -0.0287067, 0, 1, 0, 0.0287067, 0, 0.999588, -9.77015, 1.35295, -0.555037)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20, 0.5, 35)
 script = ExtResource("2_5a2gb")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Player"]
@@ -79,6 +89,7 @@ disabled = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)
 
 [node name="Camera3D" type="Camera3D" parent="Player/head"]
+current = true
 
 [node name="Weapon" type="Node3D" parent="Player/head"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.333605, -0.408288, -1.12399)
@@ -131,5 +142,23 @@ horizontal_alignment = 2
 vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="UI/HUD"]
+
+[node name="Maze" parent="." instance=ExtResource("6_tq808")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 15)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 10, 50, 0)
+
+[node name="Sculpture" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.748, 0.624103, 10.983)
+use_collision = true
+material = SubResource("StandardMaterial3D_myu3c")
+script = ExtResource("7_infqp")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="Sculpture"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.622579, 0, 0)
+operation = 2
+radius = 0.787697
+material = SubResource("StandardMaterial3D_pxqp3")
 
 [connection signal="animation_finished" from="Player/AnimationPlayer" to="Player" method="_on_animation_player_animation_finished"]

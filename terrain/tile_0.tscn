@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://dv6hps7my35lu"]
+
+[ext_resource type="Texture2D" uid="uid://rhqh0g7u4tb4" path="res://Assets/aerial_rocks_01_diff_4k.jpg" id="1_hfk5v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ibsr4"]
+albedo_texture = ExtResource("1_hfk5v")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rdqhe"]
+material = SubResource("StandardMaterial3D_ibsr4")
+size = Vector3(4, 0.1, 4)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_dk6fl"]
+points = PackedVector3Array(-2.03175, -0.0817274, -2.03175, 2.03173, 0.108712, 2.03175, 2.03173, -0.0817274, 2.03175, 2.03173, 0.108712, -2.03175, -2.03175, 0.108712, 2.03175, -2.03175, -0.0817274, 2.03175, 2.03173, -0.0817274, -2.03175, -2.03175, 0.108712, -2.03175)
+
+[node name="Tile0" type="StaticBody3D"]
+
+[node name="Floor" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_rdqhe")
+
+[node name="Floor_CS" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_dk6fl")
