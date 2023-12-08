@@ -16,6 +16,8 @@ Blaster Shooting: https://opengameart.org/content/muzzle-flash-with-model
 
 Terrain: https://www.patreon.com/posts/blender-export-16916038
 
+Maze Wall and Maze Floor: https://polyhaven.com/ 
+
 Music recorded in: [MuseScore 4.1.1](https://musescore.org/en)
 
 Sound effects recorded in: [Audacity 3.3.3](https://www.audacityteam.org/)
