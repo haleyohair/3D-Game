@@ -6,7 +6,7 @@ extends CharacterBody3D
 @onready var ray_cast_3d=$RayCast3D
 @onready var anim_player=$AnimationPlayer
 
-
+var health=5
 var current_speed = 5.0
 
 const walking_speed=5.0
@@ -21,20 +21,26 @@ var lerp_speed=10.0
 
 var crouching_depth=-.5
 
+var can_drop=true
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 func _ready():
-	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
 
 func _input(event):
 	if event is InputEventMouseMotion:
 		rotate_y(deg_to_rad(-event.relative.x*mouse_sens))
 		head.rotate_x(deg_to_rad(-event.relative.y*mouse_sens))
 		head.rotation.x=clamp(head.rotation.x,deg_to_rad(-89),deg_to_rad(89))
-
-func _physics_process(delta):
 	
+func _physics_process(delta):
+	if Input.is_action_just_pressed("pickup") and can_drop:
+		for w in $head/Weapon.get_children():
+			if w.has_method("drop"):
+				w.drop()
+				
 	if Input.is_action_just_pressed("shoot"):
 		var weapons=$head/Weapon
 		for w in weapons.get_children():
@@ -76,6 +82,17 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, current_speed)
 
 	move_and_slide()
+	
+func pickup(weapon):
+	can_drop=false
+	$Pickup_Timer.start()
+	$head/Weapon.add_child(weapon)
+	
 
+func _on_pickup_timer_timeout():
+	can_drop=true
 
-
+func damage():
+	health -= 1
+	if health <= 0:
+		get_tree().change_scene_to_file("res://UI/end_game.tscn")

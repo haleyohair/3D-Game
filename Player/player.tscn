@@ -83,4 +83,7 @@ libraries = {
 "": SubResource("AnimationLibrary_ih2ug")
 }
 
+[node name="Pickup_Timer" type="Timer" parent="."]
+
 [connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="Pickup_Timer" to="." method="_on_pickup_timer_timeout"]

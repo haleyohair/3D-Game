@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://cfmj08culyyig"]
+[gd_scene load_steps=13 format=3 uid="uid://b7wonf6xryihb"]
 
-[ext_resource type="Script" path="res://Game/blaster.gd" id="1_i1fgl"]
-[ext_resource type="ArrayMesh" uid="uid://d2n2dxu7gbt11" path="res://Assets/muzzleflash.obj" id="2_upqvd"]
-[ext_resource type="Material" uid="uid://cyt1e7mp5g3e1" path="res://Assets/muzzle.tres" id="3_eouxh"]
-[ext_resource type="Texture2D" uid="uid://btk3tslljgwud" path="res://Assets/crosshair_white_small.png" id="4_a6ily"]
-[ext_resource type="AudioStream" uid="uid://bn1ryvf6akkot" path="res://Assets/Thud.wav" id="5_te0mc"]
+[ext_resource type="Script" path="res://Game/Dropped_Blaster.gd" id="1_gfvug"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_t3eav"]
+rough = true
+bounce = 0.08
+absorbent = true
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0sc56"]
 resource_name = "yellow"
@@ -21,6 +22,7 @@ metallic = 1.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pc0yc"]
 resource_name = "_defaultMat"
 vertex_color_use_as_albedo = true
+albedo_color = Color(1, 1, 1, 1)
 metallic = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bci24"]
@@ -145,47 +147,30 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_k2ca0")
 
-[node name="Blaster" type="Node3D"]
-script = ExtResource("1_i1fgl")
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_gy4gp"]
+points = PackedVector3Array(-0.0464242, 0.00761905, 0.268615, 0.0654762, 0.0971429, 0.716147, 0.0654762, 0.00761905, 0.716147, -0.0688095, 0.0971429, 0.716147, 0.0430777, 0.0747444, 0.268615, -0.0688095, 0.00761905, 0.716147, 0.0430777, 0.00761905, 0.268615, -0.0464242, 0.0747444, 0.268615, 0.0654762, 0.0971429, 0.559493, -0.0688095, 0.0971429, 0.581878, 0.0654762, 0.00761905, 0.559493, -0.0688095, 0.00761905, 0.581878, -0.0464242, 0.0971429, 0.537108, 0.0430777, 0.0971429, 0.537108)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ff76m"]
+points = PackedVector3Array(-0.0464286, -0.21619, -0.179179, 0.0430952, -0.21619, -0.179179, 0.0654587, 0.119471, -0.693634, -0.0688095, 0.186654, -0.246077, -0.0688095, -0.059515, -0.71619, -0.0911905, -0.0818675, 0.201288, 0.0878571, -0.0818675, 0.201288, 0.0430952, 0.209048, 0.134198, 0.0654587, -0.0818675, -0.693634, -0.0688095, 0.119471, -0.693634, -0.0688095, 0.0970771, 0.246015, 0.0878571, 0.0523306, 0.201288, 0.0430952, -0.21619, -0.0224423, 0.0654587, 0.186654, -0.246077, -0.0464286, 0.209048, 0.134198, -0.0911905, 0.0523306, -7.88569e-05, -0.0464286, -0.171402, -0.425177, 0.0878571, -0.0818675, -7.88569e-05, -0.0464286, -0.21619, -0.0224423, 0.0654587, -0.104262, 0.201288, -0.0911905, 0.0523306, 0.201288, -0.0911905, -0.0818675, -7.88569e-05, 0.0654587, 0.0970771, 0.246015, 0.0654587, 0.0970771, -0.71619, -0.0688095, -0.0818675, -0.693634, 0.0878571, 0.0523306, -7.88569e-05, 0.0430952, -0.171402, -0.425177, -0.0688095, -0.104262, 0.201288, -0.0688095, 0.186654, 0.0222846, 0.0654587, 0.186654, 0.0222846, 0.0654587, -0.059515, -0.71619, -0.0688095, 0.0970771, -0.71619)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_4ah5y"]
+radius = 1.0
+
+[node name="Dropped_Blaster" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_t3eav")
+script = ExtResource("1_gfvug")
 
 [node name="blasterE2" type="MeshInstance3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.358, 0, -0.306)
 mesh = SubResource("ArrayMesh_fcdp5")
 skeleton = NodePath("")
 
-[node name="Muzzle" type="Node3D" parent="."]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.358, 0, -0.306)
-visible = false
+[node name="@CollisionShape3D@24497" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_gy4gp")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Muzzle"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1)
-light_color = Color(0.996078, 1, 0.72549, 1)
-light_energy = 5.666
-omni_range = 60.0
-omni_attenuation = 1.7411
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConvexPolygonShape3D_ff76m")
 
-[node name="Muzzleflash" type="MeshInstance3D" parent="Muzzle"]
-transform = Transform3D(-0.3, 0, -4.52987e-08, 0, 0.3, 0, 4.52987e-08, 0, -0.3, 0, 0.0510589, 0.871777)
-mesh = ExtResource("2_upqvd")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("3_eouxh")
-surface_material_override/1 = ExtResource("3_eouxh")
-surface_material_override/2 = ExtResource("3_eouxh")
+[node name="Area3D" type="Area3D" parent="."]
 
-[node name="Timer" type="Timer" parent="."]
-wait_time = 0.2
-one_shot = true
-
-[node name="Aim" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.3, 0.422, -0.85)
-target_position = Vector3(0, 0, -30)
-
-[node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(-0.225526, 0, -0.10788, 0, 0.25, 0, 0.10788, 0, -0.225526, -0.3, 0.422, -0.8)
-modulate = Color(1, 1, 1, 0.513726)
-texture = ExtResource("4_a6ily")
-
-[node name="Sound" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("5_te0mc")
-
-[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_4ah5y")

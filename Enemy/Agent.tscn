@@ -5396,5 +5396,9 @@ collision_mask = 4
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.17995, -2.05391)
 shape = SubResource("BoxShape3D_dx6mx")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1.5
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="Area3D" to="." method="_on_area_3d_body_exited"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
