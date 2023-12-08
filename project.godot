@@ -17,7 +17,6 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-DialogueManager="*res://addons/dialogue_manager/dialogue_manager.gd"
 Global="*res://global.gd"
 
 [dialogue_manager]
@@ -27,10 +26,6 @@ general/balloon_path="res://Dialogue/balloon.tscn"
 [display]
 
 window/size/mode=2
-
-[editor_plugins]
-
-enabled=PackedStringArray("res://addons/dialogue_manager/plugin.cfg")
 
 [input]
 
