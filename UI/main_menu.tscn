@@ -28,12 +28,13 @@ anchor_bottom = 1.0
 offset_bottom = -236.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 90
-text = "3D Shooter Game!"
+theme_override_font_sizes/font_size = 53
+text = "3D Shooter Game!
+Escape the maze and kill the Zombie to win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="."]
+[node name="Play_Button" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -48,4 +49,4 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Play Game"
 
-[connection signal="pressed" from="Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="Play_Button" to="." method="_on_play_button_pressed"]

@@ -2,7 +2,8 @@ extends Node
 
 func _ready():
 	process_mode = Node.PROCESS_MODE_ALWAYS
-
+	
+	
 func _input(event):
 	if event.is_action_pressed("menu"):
 		var menu = get_node_or_null("/root/Game/UI/Menu")
@@ -17,3 +18,6 @@ func _input(event):
 				menu.hide()
 				get_tree().paused = false
 				Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
+
+
+

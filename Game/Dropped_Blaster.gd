@@ -1,7 +1,7 @@
 extends RigidBody3D
 
 
-@onready var Weapon=load("res://Game/Dropped_Blaster.tscn")
+@onready var Weapon=load("res://Game/blaster.tscn")
 
 	
 

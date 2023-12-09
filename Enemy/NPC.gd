@@ -2,8 +2,8 @@ extends CharacterBody3D
 
 var d = 0
 var dialogue = [
-	"This is a test"
-	,"This is also a test"
+	"Watch where you're going"
+	,"Save me from the zombie!"
 ]
 
 func _ready():

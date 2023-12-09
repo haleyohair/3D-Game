@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://cuxflgp2q4gry"]
+[gd_scene load_steps=10 format=3 uid="uid://cuxflgp2q4gry"]
 
 [ext_resource type="Script" path="res://Game/player.gd" id="1_6o5l2"]
 [ext_resource type="PackedScene" uid="uid://cfmj08culyyig" path="res://Game/blaster.tscn" id="2_4ulnl"]
@@ -9,12 +9,6 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_nky4q"]
 height = 1.2
-
-[sub_resource type="BoxMesh" id="BoxMesh_csy83"]
-size = Vector3(1, 0.2, 1)
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_ba0kc"]
-size = Vector3(1, 0.2, 1)
 
 [sub_resource type="Animation" id="Animation_htppx"]
 resource_name = "Idle"
@@ -53,14 +47,6 @@ shape = SubResource("CapsuleShape3D_c8p3c")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.603537, 0)
 shape = SubResource("CapsuleShape3D_nky4q")
 disabled = true
-
-[node name="Feet" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.45217, 0)
-mesh = SubResource("BoxMesh_csy83")
-
-[node name="Feet_Collision" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.443489, 0)
-shape = SubResource("BoxShape3D_ba0kc")
 
 [node name="head" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.8, 0)

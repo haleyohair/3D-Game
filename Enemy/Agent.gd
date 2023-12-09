@@ -50,3 +50,8 @@ func _on_timer_timeout():
 	for b in $Area3D.get_overlapping_bodies():
 		if b.has_method("damage"):
 			b.damage()
+
+
+func _on_animation_player_animation_finished(Death):
+	get_tree().change_scene_to_file("res://Good_End_Game.tscn")
+

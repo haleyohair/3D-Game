@@ -1,15 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcqtpifft4uc6"]
+[gd_scene load_steps=2 format=3 uid="uid://bi60fh5368kws"]
 
-[ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1_b85lf"]
+[ext_resource type="Script" path="res://Good_End_Game.gd" id="1_ibmf3"]
 
-[node name="End_Game" type="Control"]
+[node name="Good_End_Game" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b85lf")
+script = ExtResource("1_ibmf3")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0.00392157, 0.694118)
+color = Color(0, 0.454902, 0.054902, 0.619608)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -29,11 +29,11 @@ offset_bottom = -236.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 90
-text = "You lose!"
+text = "You Win!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play_Button" type="Button" parent="."]
+[node name="Play again" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -46,7 +46,7 @@ offset_right = 100.0
 offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Again"
+text = "Play again"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
@@ -63,5 +63,5 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
-[connection signal="pressed" from="Play_Button" to="." method="_on_play_button_pressed"]
+[connection signal="pressed" from="Play again" to="." method="_on_play_again_pressed"]
 [connection signal="pressed" from="Quit" to="." method="_on_quit_pressed"]

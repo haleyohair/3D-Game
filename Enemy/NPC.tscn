@@ -5050,8 +5050,6 @@ _data = {
 radius = 3.0
 
 [node name="NPC" type="CharacterBody3D"]
-collision_layer = 9
-collision_mask = 9
 script = ExtResource("1_aqoxf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -5412,7 +5410,7 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_top = -102.0
 grow_horizontal = 2
 grow_vertical = 0
 color = Color(0, 0, 0, 0.501961)
@@ -5423,9 +5421,13 @@ anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -40.0
+offset_top = -102.0
+offset_bottom = 2.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_font_sizes/font_size = 50
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Timer" type="Timer" parent="Dialogue"]
 wait_time = 2.0
