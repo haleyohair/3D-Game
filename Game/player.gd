@@ -6,6 +6,7 @@ extends CharacterBody3D
 @onready var ray_cast_3d=$RayCast3D
 @onready var anim_player=$AnimationPlayer
 
+
 var health=5
 var current_speed = 5.0
 

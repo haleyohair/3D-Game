@@ -3,6 +3,8 @@ extends CharacterBody3D
 var dying=false
 var attacking=false
 
+
+
 @onready var NA=$NavigationAgent3D
 const SPEED=3.0
 func _ready():
@@ -42,8 +44,11 @@ func _on_area_3d_body_exited(body):
 func damage():
 	if not dying:
 		dying=true
+		Global.update_score(100)
 		$AnimationPlayer.play("Death")
 		velocity=Vector3.ZERO
+		
+		
 
 
 func _on_timer_timeout():

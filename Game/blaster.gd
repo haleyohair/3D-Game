@@ -19,6 +19,7 @@ func shoot():
 			bullet_hole.look_at($Aim.get_collision_normal()+$Aim.get_collision_point(),Vector3.UP)
 		if target.has_method("damage"):
 			target.damage()
+		
 
 
 func _on_timer_timeout():

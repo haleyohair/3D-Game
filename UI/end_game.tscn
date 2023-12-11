@@ -1,6 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dcqtpifft4uc6"]
+[gd_scene load_steps=2 format=3 uid="uid://hn00nn8ev6p8"]
 
-[ext_resource type="Script" path="res://UI/Main_Menu.gd" id="1_b85lf"]
+[ext_resource type="Script" path="res://UI/End_Game1.gd" id="1_wq6lt"]
 
 [node name="End_Game" type="Control"]
 layout_mode = 3
@@ -9,7 +9,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_b85lf")
+script = ExtResource("1_wq6lt")
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1
@@ -18,7 +18,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(1, 0, 0.00392157, 0.694118)
+color = Color(1, 0, 0, 1)
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -29,7 +29,7 @@ offset_bottom = -236.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 90
-text = "You lose!"
+text = "You Lose!"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -41,12 +41,12 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = -20.0
+offset_top = 16.0
 offset_right = 100.0
-offset_bottom = 20.0
+offset_bottom = 56.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "Play Again"
+text = "Play again"
 
 [node name="Quit" type="Button" parent="."]
 layout_mode = 1
@@ -56,9 +56,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -100.0
-offset_top = 36.0
+offset_top = 66.0
 offset_right = 100.0
-offset_bottom = 76.0
+offset_bottom = 106.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"

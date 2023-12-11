@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dwf12xde2pr2q"]
+[gd_scene load_steps=18 format=3 uid="uid://dwf12xde2pr2q"]
 
 [ext_resource type="Script" path="res://Game/game.gd" id="1_1pyk7"]
 [ext_resource type="PackedScene" uid="uid://1jiynlranjhq" path="res://terrain/terrain1.tscn" id="1_wd6r8"]
@@ -10,6 +10,7 @@
 [ext_resource type="Script" path="res://UI/Menu.gd" id="9_j37nv"]
 [ext_resource type="PackedScene" uid="uid://s5uc720x7l1l" path="res://Enemy/Agent.tscn" id="9_n3hv0"]
 [ext_resource type="AudioStream" uid="uid://dkxnj5ft4di1j" path="res://Assets/3d (mp3cut.net).mp3" id="9_t7jeo"]
+[ext_resource type="Script" path="res://UI/HUD.gd" id="11_lqd3v"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_lhwv2"]
 panorama = ExtResource("1_wmcyq")
@@ -149,5 +150,34 @@ grow_horizontal = 2
 grow_vertical = 2
 text = "Quit"
 
+[node name="HUD" type="Control" parent="UI"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_lqd3v")
+
+[node name="Score" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_right = 210.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 50
+text = "Score:"
+vertical_alignment = 1
+
+[node name="Time" type="Label" parent="UI/HUD"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 68.0
+offset_right = 210.0
+offset_bottom = 140.0
+theme_override_font_sizes/font_size = 50
+text = "Time:"
+
+[node name="Timer" type="Timer" parent="UI/HUD"]
+autostart = true
+
 [connection signal="pressed" from="UI/Menu/Restart" to="UI/Menu" method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/Menu/Quit" to="UI/Menu" method="_on_quit_pressed"]
+[connection signal="timeout" from="UI/HUD/Timer" to="UI/HUD" method="_on_timer_timeout"]
