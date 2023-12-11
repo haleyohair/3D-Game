@@ -4,19 +4,14 @@ Project 5 for MSCH-C220
 ## Implementation
 
 ## What Makes this a Game?
+This is a game because there is a set goal on the main menu screen for the player to complete. The mission is to kill the Zombie and escape the maze in less than 130 seconds
 
 ## References
 Created using: [Godot 4.1.1](https://godotengine.org/download)
 
-Sky: https://polyhaven.com/a/kloofendal_48d_partly_cloudy_puresky
 
-Blaster: https://kenney.nl/assets/blaster-kit 
-
-Blaster Shooting: https://opengameart.org/content/muzzle-flash-with-model 
-
-Terrain: https://www.patreon.com/posts/blender-export-16916038
-
-Maze Wall and Maze Floor: https://polyhaven.com/ 
+Assets from: https://polyhaven.com/ https://opengameart.org/ https://www.patreon.com/posts/blender-export-16916038
+https://kenney.nl/
 
 Music recorded in: [MuseScore 4.1.1](https://musescore.org/en)
 
