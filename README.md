@@ -8,7 +8,6 @@ A simple maze shooter game
 ## Implementation
 I have included features such as two different end game screens, one if you win, one if you lose. There is a time limit of 130 seconds. The players score is tracked and they can earn 100 points when killing the zombie. If the player falls off of the world they will die. There is orginal music playing as well as an orginal sound effect when the gun shoots. The player can sprint by pressing w and shift at the same time. The player can crouch by pressing w and control at the same time. 
 
-The player can attack the Zombie and the Zombie can attack the player. The player uses a  If the bat runs into the player the bat and the player die. Music was made for the level of the game and sound affects have been made when the player jumps, walks, attacks, and dies. There are tiny blades of grass that fly up when the player walks. The end game screen tells the player how many coins they get. There is a 30 second timer and when it runs out the game is over. The game also ends if the player collects all of the coins.
 
 ## What Makes this a Game?
 This is a game because there is a set goal on the main menu screen for the player to complete. The mission is to shoot and kill the Zombie and escape the maze in less than 130 seconds. The player gets 100 points for killing the zombie and gets a "You Win" end screen. If the player fails to kill the zombie, runs out of time, or falls off the edge of the world, they die and see a "You Lose" end screen. They also will end with 0 ponts.
